@@ -1,0 +1,11 @@
+{
+  "appId": "com.hubcast.app",
+  "appName": "Hubcast",
+  "webDir": "build",
+  "android": {
+    "backgroundColor": "#c9c5bc"
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}

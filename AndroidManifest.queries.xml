@@ -1,0 +1,23 @@
+<!--
+  Paste this as a direct child of <manifest>, as a SIBLING of <application>.
+
+  Android 11 and later hide installed packages from your app unless you declare
+  what you intend to look for. Without this block,
+  queryIntentActivities(nostrsigner:) returns empty and the app concludes no
+  signer is installed even when Amber is sitting right there. It is the single
+  most common reason NIP-55 integrations fail.
+-->
+<queries>
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="nostrsigner" />
+  </intent>
+
+  <!--
+    Content-provider access is resolved by package name, not by intent, so the
+    background signing path needs each signer named explicitly. Add others as
+    you support them.
+  -->
+  <package android:name="com.greenart7c3.nostrsigner" />
+</queries>
